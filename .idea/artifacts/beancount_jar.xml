@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="beancount:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/beancount_jar</output-path>
+    <root id="archive" name="beancount.jar">
+      <element id="module-output" name="beancount" />
+    </root>
+  </artifact>
+</component>
