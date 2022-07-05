@@ -10,7 +10,7 @@ burp i love beans
 <store> <date> <card> <total>
 ```
 * header must be the first line
-* arguments separated by a space (be careful about trailing whitespace
+* arguments separated by a space (be careful about trailing whitespace)
 ```     
 <store>         one string
 <date>          mmddyy
