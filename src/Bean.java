@@ -47,6 +47,17 @@ public class Bean {
                         }
                         cost = sum;
                     }
+                    if (costString.contains("+")) {
+                        String[] costValues = costString.split("/+");
+                        int equationIndex = 0;
+                        Double sum = Double.valueOf(costValues[equationIndex]);
+                        equationIndex = 1;
+                        while (equationIndex < costValues.length) {
+                            sum += Double.valueOf(costValues[equationIndex]);
+                            equationIndex++;
+                        }
+                        cost = sum;
+                    }
                     else {
                         cost = Double.valueOf(costString);
                     }
