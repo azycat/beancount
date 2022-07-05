@@ -5,7 +5,7 @@ burp i love beans
 <name of store> month date year.txt
 ```
 
-## HEADER ARGS (separated by a space)
+## HEADER FORMAT
 ```
 <store> <date> <card> <total>
 ```
@@ -26,7 +26,7 @@ burp i love beans
 * separated by spaces (be careful about trailing whitespace)
 
 ```
-<item>          name of item as ONE word, e.g. oat_mill
+<item>          name of item as ONE word, e.g. oat_milk
 <price>         e.g. 4.20, no dollar sign
                 -> Supports subtraction e.g 4.20-0.69
                 -> NEW! Supports addition e.g. 4.20+0.69
