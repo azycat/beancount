@@ -5,7 +5,7 @@ burp i love beans
 <name of store> month date year.txt
 ```
 
-### HEADER ARGS (separated by a space)
+## HEADER ARGS (separated by a space)
 ```
 <store> <date> <card> <total>
 ```
