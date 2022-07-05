@@ -28,7 +28,9 @@ burp i love beans
 ```
 <item>          name of item as ONE word, e.g. oat_mill
 <price>         e.g. 4.20, no dollar sign
-                -> accepts subtraction e.g 4.20-0.69
+                -> Supports subtraction e.g 4.20-0.69
+                -> NEW! Supports addition e.g. 4.20+0.69
+                -> does NOT support both subtraction and addition at the same time...
                 -> if you wanna add a negative value do 0-4.20
 ```
 
