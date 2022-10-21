@@ -47,7 +47,7 @@ public class Bean {
                         }
                         cost = sum;
                     }
-                    if (costString.contains("+")) {
+                    else if (costString.contains("+")) {
                         String[] costValues = costString.split("/+");
                         int equationIndex = 0;
                         Double sum = Double.valueOf(costValues[equationIndex]);
