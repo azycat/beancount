@@ -14,6 +14,8 @@ public class Receipt {
 
     static final int MELLY_CARD = 7763;
     static final int MOOP_CARD = 9704;
+    static final int MOOP_NEW_CARD = 6025;
+    static final int MOOP_OTHER_NEW_CARD = 8307;
     static final int MEEP_CARD = 1684;
 
     public Receipt(String store, int card, Date date) {
@@ -67,6 +69,12 @@ public class Receipt {
                 name = "Melly";
                 break;
             case MOOP_CARD:
+                name = "Moop";
+                break;
+            case MOOP_NEW_CARD:
+                name = "Moop";
+                break;
+            case MOOP_OTHER_NEW_CARD:
                 name = "Moop";
                 break;
             case MEEP_CARD:
