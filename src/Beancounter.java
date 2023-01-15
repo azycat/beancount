@@ -12,7 +12,7 @@ public class Beancounter {
     private double libbyPays = 0.0;
     private double guestPays = 0.0;
 
-    public Beancounter(Receipt receipt, List<Gnome> gnomes) {
+    public Beancounter(Receipt receipt) {
         this.receipt = receipt;
         splitTheBill();
     }
