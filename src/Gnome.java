@@ -24,7 +24,7 @@ public class Gnome {
         return moneySpent;
     }
 
-    public void setMoneySpent(Double cost) {
+    public void addMoneySpent(Double cost) {
         this.moneySpent += cost;
     }
 }

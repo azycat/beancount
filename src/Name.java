@@ -12,7 +12,7 @@ public enum Name {
     rai,
     GUEST;
 
-    public Name getName(String name) {
+    public static Name getName(String name) {
         return switch (name.toLowerCase(Locale.ROOT)) {
             case "chelly", "meep", "chel" -> chelly;
             case "melly", "mel" -> melly;
@@ -23,7 +23,7 @@ public enum Name {
         };
     }
 
-    public String getString(Name name) {
+    public static String getString(Name name) {
         return switch (name) {
             case melly -> "Melly";
             case chelly -> "Chelly";
