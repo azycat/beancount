@@ -1,5 +1,9 @@
 import java.util.Locale;
 
+/**
+ * Name enum stores and enumerates various names used throughout the program
+ **/
+
 public enum Name {
     chelly,
     melly,
