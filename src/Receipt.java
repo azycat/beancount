@@ -4,20 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ * Receipt class contains information about a receipt's store, date of purchase, card, and total cost
+ * It contains a list of Beans
+ *
+ * Also for some reason this is where all the card numbers are stored... weird.
+ */
 public class Receipt {
     private String store;
     private Date dateOfPurchase;
     private Integer card;
     private Double total;
     private List<Bean> beans = new ArrayList<>();
-
-    static final int MELLY_CARD = 7763;
-    static final int MOOP_CARD = 9704;
-    static final int MOOP_CARD_1 = 6025;
-    static final int MOOP_CARD_2 = 8307;
-    static final int MEEP_CARD = 1684;
-    static final int RAI_CARD = 7398;
 
     public Receipt(String store, int card, Date date) {
         this.store = store;
@@ -64,28 +62,8 @@ public class Receipt {
     }
 
     public String getPaidForBy() {
-        String name = "Unknown";
-        switch (card) {
-            case MELLY_CARD:
-                name = "Melly";
-                break;
-            case MOOP_CARD:
-                name = "Moop";
-                break;
-            case MOOP_CARD_1:
-                name = "Moop";
-                break;
-            case MOOP_CARD_2:
-                name = "Moop";
-                break;
-            case MEEP_CARD:
-                name = "Meep";
-                break;
-            default:
-                name = "Anonymous";
-                break;
-        }
-        return name;
+        Name name = Cardcaptor.getName(card);
+        return Name.getString(name);
     }
 
     public void addBean(Bean b) {

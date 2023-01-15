@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Beancounter {
     private Receipt receipt;
+    private List<Gnome> gnomes;
 
     private double chelPays = 0.0;
     private double melPays = 0.0;
@@ -11,7 +12,7 @@ public class Beancounter {
     private double libbyPays = 0.0;
     private double guestPays = 0.0;
 
-    public Beancounter(Receipt receipt) {
+    public Beancounter(Receipt receipt, List<Gnome> gnomes) {
         this.receipt = receipt;
         splitTheBill();
     }
