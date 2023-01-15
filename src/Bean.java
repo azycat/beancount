@@ -1,12 +1,13 @@
-// Bean class describes a single item that is listed on a receipt. It represents a purchase made.
 import java.util.ArrayList;
 import java.util.List;
 
+// Bean class describes a single item that is listed on a receipt. It represents a purchase made.
+
 public class Bean {
-    String nameOfProduct;
-    Double cost;
-    List<Gnome> purchasers = new ArrayList<>();
-    int multiplier;
+    private String nameOfProduct;
+    private Double cost;
+    private List<Gnome> purchasers;
+    private int multiplier;
 
     public Bean(String name, Double cost, List<Gnome>purchasers, int multiplier) {
         // constructor
@@ -70,17 +71,17 @@ public class Bean {
                         multiplier = multiplyBeans(beanLine[argIndex]);
                     }
                     if (extra.contains("a")) {
-                        Gnome alvin = Gnome.buildGnome("Alvin");
+                        Gnome alvin = new Gnome(Name.moopy);
                         gnomes.add(alvin);
                         splitEven = false;
                     }
                     if (extra.contains("c")) {
-                        Gnome chel = Gnome.buildGnome("chel");
+                        Gnome chel = new Gnome(Name.chelly);
                         gnomes.add(chel);
                         splitEven =false;
                     }
                     if (extra.contains("k")) {
-                        Gnome mel = Gnome.buildGnome("mel");
+                        Gnome mel = new Gnome (Name.melly);
                         gnomes.add(mel);
                         splitEven = false;
                     }
@@ -89,9 +90,9 @@ public class Bean {
             }
         }
         if(splitEven == true && gnomes.size() == 0) {
-           Gnome mel = Gnome.buildGnome("mel");
-           Gnome chel = Gnome.buildGnome("chel");
-           Gnome alvin = Gnome.buildGnome("moop");
+           Gnome mel = new Gnome (Name.melly);
+           Gnome chel = new Gnome(Name.chelly);
+           Gnome alvin = new Gnome(Name.moopy);
            gnomes.add(mel);
            gnomes.add(chel);
            gnomes.add(alvin);
@@ -117,7 +118,7 @@ public class Bean {
     public boolean hasChel() {
         boolean hasChel = false;
         for (Gnome g : purchasers) {
-            if (g.getName() == "chelly") {
+            if (g.getName() == Name.chelly) {
                 hasChel = true;
             }
         }
@@ -127,7 +128,7 @@ public class Bean {
     public boolean hasMel() {
         boolean hasMel = false;
         for (Gnome g : purchasers) {
-            if (g.getName() == "melly") {
+            if (g.getName() == Name.melly) {
                 hasMel = true;
             }
         }
@@ -137,13 +138,17 @@ public class Bean {
     public boolean hasMoop() {
         boolean hasMoop = false;
         for (Gnome g : purchasers) {
-            if (g.getName() == "alvin") {
+            if (g.getName() == Name.moopy) {
                 hasMoop = true;
             }
         }
         return hasMoop;
     }
 
+    public boolean hasRai() {
+        boolean hasRai = false;
+        return hasRai;
+    }
 
     public Double getCost() {
         return cost;

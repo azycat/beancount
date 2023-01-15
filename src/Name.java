@@ -33,4 +33,8 @@ public enum Name {
             case GUEST -> "Anonymous";
         };
     }
+
+    public static boolean isGnome(Name name) {
+        return (name == chelly || name == melly || name == moopy);
+    }
 }

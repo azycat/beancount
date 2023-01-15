@@ -1,20 +1,22 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Beancounter {
-    Receipt receipt;
-    double chelPays;
-    double melPays;
-    double moopPays;
+    private Receipt receipt;
+
+    private double chelPays = 0.0;
+    private double melPays = 0.0;
+    private double moopPays = 0.0;
+    private double raiPays = 0.0;
+    private double libbyPays = 0.0;
+    private double guestPays = 0.0;
 
     public Beancounter(Receipt receipt) {
         this.receipt = receipt;
-        chelPays = 0.0;
-        melPays = 0.0;
-        moopPays = 0.0;
-        beanCountingAlgorithm();
+        splitTheBill();
     }
 
-    public void beanCountingAlgorithm() {
+    public void splitTheBill() {
         List<Bean> beans = receipt.getBeanList();
         for (Bean b : beans) {
             int divisor = b.getPurchasers().size();

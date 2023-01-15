@@ -1,68 +1,30 @@
 // Class Gnome contains information about a member living in this home
-
-import java.util.Locale;
+// also contains Guests for now until i stop being lazy and add polymorphism for now.
+// use isRealGnome() to check if a Gnome is really a gnome (SORRY)
 
 public class Gnome {
-    private String name;
+    private final Name name;
     private int cardID;
-    private Double totalSpent;
+    private double moneySpent;
 
-    public Gnome() {
-        totalSpent = 0.0;
-    }
-
-    public static Gnome buildGnome(String name) {
-        Gnome g = new Gnome();
-        switch(name.toLowerCase(Locale.ROOT)) {
-            case "melly":
-                g.setName("melly");
-                break;
-            case "mel":
-                g.setName("melly");
-                break;
-            case "kmel":
-                g.setName("melly");
-                break;
-            case "chelly":
-                g.setName("chelly");
-                break;
-            case "meep":
-                g.setName("chelly");
-                break;
-            case "chel":
-                g.setName("chelly");
-                break;
-            case "moop":
-                g.setName("alvin");
-                break;
-            case "alvin":
-                g.setName("alvin");
-                break;
-        }
-        return g;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Gnome(Name name) {
+        moneySpent = 0.0;
         this.name = name;
     }
 
-    public int getCardID() {
-        return cardID;
+    public Name getName() {
+        return name;
     }
 
-    public void setCardID(int cardID) {
-        this.cardID = cardID;
+    public boolean isRealGnome() {
+        return Name.isGnome(name);
     }
 
-    public Double getTotalSpent() {
-        return totalSpent;
+    public Double getMoneySpent() {
+        return moneySpent;
     }
 
-    public void setTotalSpent(Double cost) {
-        this.totalSpent += cost;
+    public void setMoneySpent(Double cost) {
+        this.moneySpent += cost;
     }
 }
