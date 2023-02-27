@@ -6,16 +6,17 @@ import java.util.List;
 
 /**
  * Receipt class contains information about a receipt's store, date of purchase, card, and total cost
- * It contains a list of Beans
+ * It contains a list of Beans, and a list of Gnomes involved in the purchase.
  *
- * Also for some reason this is where all the card numbers are stored... weird.
  */
 public class Receipt {
     private String store;
     private Date dateOfPurchase;
     private Integer card;
     private Double total;
+
     private List<Bean> beans = new ArrayList<>();
+    private List<Gnome> totalGnomes = new ArrayList();
 
     public Receipt(String store, int card, Date date) {
         this.store = store;

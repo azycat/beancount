@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 // Bean class describes a single item that is listed on a receipt. It represents a purchase made.
@@ -9,18 +10,29 @@ public class Bean {
     private List<Gnome> purchasers;
     private int multiplier;
 
-    public Bean(String name, Double cost, List<Gnome>purchasers, int multiplier) {
-        // constructor
-        this.nameOfProduct = name;
-        this.cost = cost;
+    Hashtable<Name, Boolean> nameTable = new Hashtable<Name, Boolean>();
+
+    public boolean moopy, chelly, melly, rai, libby, guest = false; // TODO evaluate if this is truly the right decision
+
+    public Bean(String nameOfProduct, Double costOfProduct, List<Gnome> purchasers, int multiplier) {
+        this.nameOfProduct = nameOfProduct;
+        this.cost = costOfProduct;
         this.purchasers = purchasers;
         this.multiplier = multiplier;
+
+        populateTable(purchasers);
+    }
+
+    private void populateTable(List<Gnome> purchasers) {
+        for (Gnome g : purchasers) {
+
+        }
     }
 
     public static Bean makeBeanFromLine(String line) {
-        List<Gnome> gnomes = new ArrayList<>();
-        String name = null;
-        Double cost = null;
+        List<Gnome> purchasers = new ArrayList<>();
+        String nameOfProduct = null;
+        Double costOfProduct = null;
         boolean splitEven = true;
         int multiplier = 1;
 
@@ -32,36 +44,12 @@ public class Bean {
         while (argIndex < beanLine.length) {
             switch(argIndex) {
                 case 0:
-                    name = beanLine[argIndex];
+                    nameOfProduct = beanLine[argIndex];
                     argIndex++;
                     break;
                 case 1:
                     String costString = beanLine[argIndex];
-                    if (costString.contains("-")) {
-                        String[] costValues = costString.split("-");
-                        int equationIndex = 0;
-                        Double sum = Double.valueOf(costValues[equationIndex]);
-                        equationIndex = 1;
-                        while (equationIndex < costValues.length) {
-                            sum -= Double.valueOf(costValues[equationIndex]);
-                            equationIndex++;
-                        }
-                        cost = sum;
-                    }
-                    else if (costString.contains("+")) {
-                        String[] costValues = costString.split("/+");
-                        int equationIndex = 0;
-                        Double sum = Double.valueOf(costValues[equationIndex]);
-                        equationIndex = 1;
-                        while (equationIndex < costValues.length) {
-                            sum += Double.valueOf(costValues[equationIndex]);
-                            equationIndex++;
-                        }
-                        cost = sum;
-                    }
-                    else {
-                        cost = Double.valueOf(costString);
-                    }
+                    costOfProduct = parseCostString(costString);
                     argIndex++;
                     break;
                 case 2: // extra tokens
@@ -70,36 +58,70 @@ public class Bean {
                     if (extra.contains("x")) {
                         multiplier = multiplyBeans(beanLine[argIndex]);
                     }
-                    if (extra.contains("a")) {
-                        Gnome alvin = new Gnome(Name.moopy);
-                        gnomes.add(alvin);
-                        splitEven = false;
-                    }
-                    if (extra.contains("c")) {
-                        Gnome chel = new Gnome(Name.chelly);
-                        gnomes.add(chel);
-                        splitEven =false;
-                    }
-                    if (extra.contains("k")) {
-                        Gnome mel = new Gnome (Name.melly);
-                        gnomes.add(mel);
+                    if (containsNameToken(extra)) {
                         splitEven = false;
                     }
                     argIndex++;
                     break;
             }
         }
-        if(splitEven == true && gnomes.size() == 0) {
+        if(splitEven == true && purchasers.size() == 0) {
            Gnome mel = new Gnome (Name.melly);
            Gnome chel = new Gnome(Name.chelly);
            Gnome alvin = new Gnome(Name.moopy);
-           gnomes.add(mel);
-           gnomes.add(chel);
-           gnomes.add(alvin);
+           purchasers.add(mel);
+           purchasers.add(chel);
+           purchasers.add(alvin);
         }
-        Bean newBean = new Bean(name, cost, gnomes, multiplier);
+        Bean newBean = new Bean(nameOfProduct, costOfProduct, purchasers, multiplier);
 
         return newBean;
+    }
+
+    private static boolean containsNameToken(String token) {
+        boolean containsName = false;
+        if (token.contains("a")) {
+            containsName = true;
+        }
+        if (token.contains("c")) {
+            Gnome chel = new Gnome(Name.chelly);
+            purchasers.add(chel);
+            splitEven =false;
+        }
+        if (extra.contains("k")) {
+            Gnome mel = new Gnome (Name.melly);
+            purchasers.add(mel);
+            splitEven = false;
+        }
+    }
+    private static Double parseCostString(String costString) {
+        Double costOfProduct;
+        if (costString.contains("-")) {
+            String[] costValues = costString.split("-");
+            int equationIndex = 0;
+            Double sum = Double.valueOf(costValues[equationIndex]);
+            equationIndex = 1;
+            while (equationIndex < costValues.length) {
+                sum -= Double.valueOf(costValues[equationIndex]);
+                equationIndex++;
+            }
+            costOfProduct = sum;
+        }
+        else if (costString.contains("+")) {
+            String[] costValues = costString.split("/+");
+            int equationIndex = 0;
+            Double sum = Double.valueOf(costValues[equationIndex]);
+            equationIndex = 1;
+            while (equationIndex < costValues.length) {
+                sum += Double.valueOf(costValues[equationIndex]);
+                equationIndex++;
+            }
+            costOfProduct = sum;
+        }
+        else {
+            costOfProduct = Double.valueOf(costString);
+        }
+        return costOfProduct;
     }
 
     public static int multiplyBeans(String token) {

@@ -3,14 +3,7 @@ import java.util.List;
 
 public class Beancounter {
     private Receipt receipt;
-    private List<Gnome> gnomes;
-
-    private double chelPays = 0.0;
-    private double melPays = 0.0;
-    private double moopPays = 0.0;
-    private double raiPays = 0.0;
-    private double libbyPays = 0.0;
-    private double guestPays = 0.0;
+    private List<Gnome> purchasers;
 
     public Beancounter(Receipt receipt) {
         this.receipt = receipt;

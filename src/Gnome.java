@@ -4,7 +4,6 @@
 
 public class Gnome {
     private final Name name;
-    private int cardID;
     private double moneySpent;
 
     public Gnome(Name name) {
@@ -16,7 +15,7 @@ public class Gnome {
         return name;
     }
 
-    public boolean isRealGnome() {
+    public boolean isGnomeInHome() {
         return Name.isGnome(name);
     }
 
@@ -27,4 +26,5 @@ public class Gnome {
     public void addMoneySpent(Double cost) {
         this.moneySpent += cost;
     }
+
 }
