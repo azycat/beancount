@@ -1,4 +1,5 @@
-burp i love beans
+# beancount
+tool for splitting up and archiving grocery bills with my roommates
 
 ### FILENAME CONVENTION(not important)
 ```
